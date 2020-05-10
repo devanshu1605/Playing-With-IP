@@ -1,5 +1,5 @@
 # Playing-With-IP
-Application which takes zip file and returns IP details.
+Application which takes zip file and returns data details.
 
 To Run the application follow below steps
 1. Clone both the source folder on local( DashboardApp and DashBoardUI )
