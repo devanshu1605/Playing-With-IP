@@ -6,5 +6,7 @@ To Run the application follow below steps
 2. Install angular cli, node js, npm, bootstrap and font awesome.
 3. Start angular App using ng serve command.
 4. For starting Backend services execute mvn spring-boot:run
-5. Go to browser and open "http://localhost:8080" to see the application.
+5. Go to browser and open "http://localhost:4200" to see the application.
+6. Select choose file and upload a zip file containing the csv files and click submit. File should get Uploaded successfully.
+
 
