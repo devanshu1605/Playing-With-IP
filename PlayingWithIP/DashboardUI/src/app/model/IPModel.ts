@@ -1,4 +1,3 @@
-export class IPModel {
-  time: string;
-  ipList: Array<string>;
+export interface Adapter<T> {
+  adapt(item: any): T;
 }

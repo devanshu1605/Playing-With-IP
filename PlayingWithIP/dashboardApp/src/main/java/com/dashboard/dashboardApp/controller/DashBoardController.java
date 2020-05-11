@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dashboard.dashboardApp.model.CSVModel;
+import com.dashboard.dashboardApp.model.ResponseModel;
 import com.dashboard.dashboardApp.service.FileUploadService;
 
 @RestController
@@ -22,12 +22,12 @@ public class DashBoardController {
     private FileUploadService fileUploadService;
     
     @PostMapping("/uploadFile")
-    public List<List<CSVModel>> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseModel uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
     	Date date=new Date();
     	long start= date.getTime();
-        List<List<CSVModel>> list =fileUploadService.uploadFile(file);
+        ResponseModel model =fileUploadService.uploadFile(file);
         long stop= date.getTime();
         System.out.println("Latency is "+(stop-start));
-        return list;
+        return model;
     }
 }

@@ -3,15 +3,15 @@ package com.dashboard.dashboardApp.model;
 public class CSVModel {
 	
 	public CSVModel(String[] rowObject){
-		this.OBJECT_NAME = getValue(rowObject[1]);
-		this.DATE = getValue(rowObject[2]);
+		this.OBJECT_NAME = getValue(rowObject[1], "OBJECT_NAME");
+		this.DATE = getValue(rowObject[2], "DATETIME");
 		this.RequestStartTime=rowObject[3];
 		this.RequestEndTime=rowObject[4];
-		this.APPLICATIONNAME= getValue(rowObject[6]);
-		this.HOST_NAME=getValue(rowObject[8]);
-		this.OBJECT_TYPE= getValue(rowObject[7]);
-		this.EVENT_DESCRIPTION= getValue(rowObject[10]);
-		this.USER_NAME= getValue(rowObject[13]);				
+		this.APPLICATIONNAME= getValue(rowObject[6],"APPLICATIONNAME");
+		this.HOST_NAME=getValue(rowObject[8],"HOST_NAME");
+		this.OBJECT_TYPE= getValue(rowObject[7],"OBJECT_TYPE");
+		this.EVENT_DESCRIPTION= getValue(rowObject[10],"EVENT_DESCRIPTION");
+		this.USER_NAME= getValue(rowObject[13],"USER_NAME");				
 	}
 
     private String OBJECT_NAME;
@@ -91,7 +91,11 @@ public class CSVModel {
 		return RequestEndTime;
 	}
 	
-	private String getValue(String str) {
-		return str.substring(str.indexOf("=")+1, str.length());
+	private String getValue(String str, String fieldName) {
+		if(str.contains(fieldName)) {
+			return str.substring(str.indexOf("=")+1, str.length());
+		}else {
+			return "unKnown";
+		}
 	}
 }

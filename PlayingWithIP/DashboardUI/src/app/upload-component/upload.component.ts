@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { UploadService } from '../uploadservice/uploadService.service';
+import { FileUploadResponse } from '../model/ResponseModel';
 
 @Component({
   selector: 'app-uploader',
@@ -8,11 +9,13 @@ import { UploadService } from '../uploadservice/uploadService.service';
 })
 export class FileUploaderComponent {
 
+  response: FileUploadResponse;
+
   public formGroup = this.formbuilder.group({
     file: [null, Validators.required]
   });
 
-  private fileName;
+  responseRecieved: boolean = false;
 
   constructor(private formbuilder: FormBuilder, private uploadService: UploadService) { }
 
@@ -38,7 +41,9 @@ export class FileUploaderComponent {
     const formData = new FormData();
     formData.append('file', this.myForm.get('fileSource').value);
     this.uploadService.upload(formData).subscribe(res => {
-      console.log(res);
+      this.response = res;
+      this.responseRecieved = true;
+      console.log(this.response);
       alert('Uploaded Successfully.');
     });
   }

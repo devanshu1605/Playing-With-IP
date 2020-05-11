@@ -8,12 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FileUploaderComponent } from './upload-component/upload.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { BarChartComponent } from './upload-component/barchart-component/barchart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
